@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreLocation
+import Firebase
 
 class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
@@ -21,6 +22,9 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     //hamburger menu
     @Published var showMenu = false
+    
+    //Items
+    @Published var items: [Item] = []
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         //check location access
@@ -49,6 +53,7 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         //read user location ad extract detail
         self.userLocation = locations.last
         self.extractLocation()
+        self.login()
     }
     func extractLocation(){
         CLGeocoder().reverseGeocodeLocation(self.userLocation){(res, err) in
@@ -63,6 +68,40 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             address += safeData.first?.locality ?? ""
             
             self.userAddress = address
+        }
+    }
+    
+    func login(){
+        Auth.auth().signInAnonymously{(res, err) in
+            if err != nil {
+                print(err!.localizedDescription)
+                return
+            }
+            print("success = \(res!.user.uid)")
+            
+            //after login
+            self.fetchData()
+        }
+    }
+    
+    //fetch items data
+    func fetchData(){
+        
+        let db = Firestore.firestore()
+        db.collection("Items").getDocuments {(snap, err) in
+            guard let itemData = snap else {return}
+            self.items = itemData.documents.compactMap({ (doc) -> Item? in
+                
+                let id = doc.documentID
+                let name = doc.get("itemName") as! String
+                let cost = doc.get("itemCost") as! NSNumber
+                let ratings = doc.get("itemRatings") as! String
+                let image = doc.get("itemImage") as! String
+                let details = doc.get("itemDetails") as! String
+                
+                return Item(id: id, itemName: name, itemCost: cost, itemDetails: details, itemImage: image, itemRatings: ratings)
+
+            })
         }
     }
 }

@@ -51,7 +51,44 @@ struct Home: View {
                 
                 Divider()
                 
-                Spacer()
+                ScrollView(.vertical, showsIndicators: false, content: {
+                    
+                    VStack(spacing: 25) {
+                        
+                        ForEach(HomeModel.items){ item in
+                            
+                            //item view
+                            ZStack(alignment: Alignment(horizontal: .center,
+                                                        vertical: .center), content: {
+                                ItemView(item: item)
+                                
+                                HStack{
+                                    
+                                    Text("FREE DELIVERY")
+                                        .foregroundColor(.white)
+                                        .padding(.vertical, 10)
+                                        .padding(.horizontal)
+                                        .background(Color.red)
+                                    
+                                    Spacer(minLength: 0)
+                                    
+                                    Button(action: {}, label: {
+                                        
+                                        Image(systemName: "plus")
+                                            .foregroundColor(.white)
+                                            .padding(10)
+                                            .background(Color.red)
+                                            .clipShape(Circle())
+                                    })
+                                }
+                                .padding(.trailing, 10)
+                                .padding(.top, 10)
+                            })
+                            .frame(width: UIScreen.main.bounds.width - 30)
+                        }
+                    }
+                    .padding(.top, 10)
+                })
             }
             
             //hamburger menu

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60681AD02789CC890077DB5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60681ACF2789CC890077DB5C /* GoogleService-Info.plist */; };
+		60681AD22789D9A60077DB5C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60681AD12789D9A60077DB5C /* Item.swift */; };
+		60681AD42789E3410077DB5C /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60681AD32789E3410077DB5C /* ItemView.swift */; };
+		60681AD72789E4520077DB5C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 60681AD62789E4520077DB5C /* SDWebImageSwiftUI */; };
 		60B5370B2789871100E7D630 /* finalDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5370A2789871100E7D630 /* finalDemoApp.swift */; };
 		60B5370D2789871100E7D630 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5370C2789871100E7D630 /* ContentView.swift */; };
 		60B5370F2789871300E7D630 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60B5370E2789871300E7D630 /* Assets.xcassets */; };
@@ -14,9 +18,14 @@
 		60B5371E27898A9E00E7D630 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5371D27898A9E00E7D630 /* Home.swift */; };
 		60B5372027898AF900E7D630 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5371F27898AF900E7D630 /* HomeViewModel.swift */; };
 		60B537222789A49500E7D630 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B537212789A49500E7D630 /* Menu.swift */; };
+		7B738E03267B68458B61600D /* Pods_finalDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7504FE0E9A6166EBC9BD517F /* Pods_finalDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BC3DA3521F6CB110212096C /* Pods-finalDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalDemo.release.xcconfig"; path = "Target Support Files/Pods-finalDemo/Pods-finalDemo.release.xcconfig"; sourceTree = "<group>"; };
+		60681ACF2789CC890077DB5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		60681AD12789D9A60077DB5C /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		60681AD32789E3410077DB5C /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		60B537072789871100E7D630 /* finalDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B5370A2789871100E7D630 /* finalDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalDemoApp.swift; sourceTree = "<group>"; };
 		60B5370C2789871100E7D630 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -25,6 +34,8 @@
 		60B5371D27898A9E00E7D630 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		60B5371F27898AF900E7D630 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		60B537212789A49500E7D630 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		7504FE0E9A6166EBC9BD517F /* Pods_finalDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finalDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5C6052E7209A57E808771A1 /* Pods-finalDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalDemo.debug.xcconfig"; path = "Target Support Files/Pods-finalDemo/Pods-finalDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60681AD72789E4520077DB5C /* SDWebImageSwiftUI in Frameworks */,
+				7B738E03267B68458B61600D /* Pods_finalDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +54,11 @@
 		60B536FE2789871100E7D630 = {
 			isa = PBXGroup;
 			children = (
+				60681ACF2789CC890077DB5C /* GoogleService-Info.plist */,
 				60B537092789871100E7D630 /* finalDemo */,
 				60B537082789871100E7D630 /* Products */,
+				6D0CC00835F7D168460F64B4 /* Pods */,
+				67CC2CB6E3B5CC706D030B62 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +97,7 @@
 			children = (
 				60B5371D27898A9E00E7D630 /* Home.swift */,
 				60B537212789A49500E7D630 /* Menu.swift */,
+				60681AD32789E3410077DB5C /* ItemView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -96,8 +113,26 @@
 		60B5371C27898A8000E7D630 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				60681AD12789D9A60077DB5C /* Item.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		67CC2CB6E3B5CC706D030B62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7504FE0E9A6166EBC9BD517F /* Pods_finalDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6D0CC00835F7D168460F64B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E5C6052E7209A57E808771A1 /* Pods-finalDemo.debug.xcconfig */,
+				5BC3DA3521F6CB110212096C /* Pods-finalDemo.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,15 +142,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60B537152789871300E7D630 /* Build configuration list for PBXNativeTarget "finalDemo" */;
 			buildPhases = (
+				0DC62448576DC86C07D12CAE /* [CP] Check Pods Manifest.lock */,
 				60B537032789871100E7D630 /* Sources */,
 				60B537042789871100E7D630 /* Frameworks */,
 				60B537052789871100E7D630 /* Resources */,
+				B687836E4789CE970DA01407 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = finalDemo;
+			packageProductDependencies = (
+				60681AD62789E4520077DB5C /* SDWebImageSwiftUI */,
+			);
 			productName = finalDemo;
 			productReference = 60B537072789871100E7D630 /* finalDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +184,9 @@
 				Base,
 			);
 			mainGroup = 60B536FE2789871100E7D630;
+			packageReferences = (
+				60681AD52789E4520077DB5C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 60B537082789871100E7D630 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -160,10 +203,53 @@
 			files = (
 				60B537122789871300E7D630 /* Preview Assets.xcassets in Resources */,
 				60B5370F2789871300E7D630 /* Assets.xcassets in Resources */,
+				60681AD02789CC890077DB5C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0DC62448576DC86C07D12CAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-finalDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B687836E4789CE970DA01407 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-finalDemo/Pods-finalDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-finalDemo/Pods-finalDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-finalDemo/Pods-finalDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		60B537032789871100E7D630 /* Sources */ = {
@@ -174,6 +260,8 @@
 				60B5371E27898A9E00E7D630 /* Home.swift in Sources */,
 				60B5370B2789871100E7D630 /* finalDemoApp.swift in Sources */,
 				60B5372027898AF900E7D630 /* HomeViewModel.swift in Sources */,
+				60681AD42789E3410077DB5C /* ItemView.swift in Sources */,
+				60681AD22789D9A60077DB5C /* Item.swift in Sources */,
 				60B537222789A49500E7D630 /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +387,7 @@
 		};
 		60B537162789871300E7D630 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5C6052E7209A57E808771A1 /* Pods-finalDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -328,6 +417,7 @@
 		};
 		60B537172789871300E7D630 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BC3DA3521F6CB110212096C /* Pods-finalDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -377,6 +467,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		60681AD52789E4520077DB5C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		60681AD62789E4520077DB5C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60681AD52789E4520077DB5C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 60B536FF2789871100E7D630 /* Project object */;
 }
