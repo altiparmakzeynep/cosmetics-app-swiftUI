@@ -13,18 +13,19 @@ struct Menu: View {
     var body: some View {
         
         VStack{
-            Button(action: {}, label: {
-                HStack(spacing: 15){
-                    Image(systemName: "cart")
-                        .font(.title)
-                        .foregroundColor(Color.green)
-                    Text("cart")
-                        .fontWeight(.bold)
-                        .foregroundColor(.green)
-                    Spacer(minLength: 0)
-                }
-                .padding()
-            })
+         
+            NavigationLink(destination: CartView(homeData: homeData)) {
+                    HStack(spacing: 15){
+                        Image(systemName: "cart")
+                            .font(.title)
+                            .foregroundColor(Color.green)
+                        Text("cart")
+                            .fontWeight(.bold)
+                            .foregroundColor(.green)
+                        Spacer(minLength: 0)
+                    }
+                    .padding()
+            }
             
             Spacer()
             

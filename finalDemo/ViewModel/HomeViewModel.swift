@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreLocation
 import Firebase
+import SDWebImageSwiftUI
 
 class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
@@ -28,7 +29,12 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     //Items for search structure
     @Published var filtered: [Item] = []
 
+    //Cart
+    @Published var cartItems: [Cart] = []
+    @Published var ordered = false
+
     
+    //location functions
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         //check location access
         switch manager.authorizationStatus {
@@ -58,6 +64,7 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.extractLocation()
         self.login()
     }
+    
     func extractLocation(){
         CLGeocoder().reverseGeocodeLocation(self.userLocation){(res, err) in
             
@@ -116,6 +123,110 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             self.filtered = self.items.filter {
                 return $0.itemName.lowercased().contains(self.search.lowercased())
             }
+        }
+    }
+    
+    //add items to cart
+    func addToCart(item: Item) {
+        
+        //eklenmis mi?
+        self.items[getIndex(item: item, isCartIndex: false)].isAdded = !item.isAdded
+        
+        let filterIndex = self.filtered.firstIndex{ (item1) -> Bool in
+            
+            return item.id == item1.id
+        }  ?? 0
+        
+        //update items array
+        self.filtered[filterIndex].isAdded = !item.isAdded
+        
+        if item.isAdded {
+            
+            self.cartItems.remove(at: getIndex(item: item, isCartIndex: true))
+            return
+        }
+        //else
+        self.cartItems.append(Cart(item: item, quantity: 1))
+    }
+    
+    func getIndex(item: Item, isCartIndex: Bool) ->Int{
+        
+        let index = self.items.firstIndex { (item1) -> Bool in
+            
+            return item.id == item1.id
+            
+        } ?? 0
+        
+        let cartIndex = self.cartItems.firstIndex { (item1) -> Bool in
+            
+            return item.id == item1.item.id
+            
+        } ?? 0
+        
+        return isCartIndex ? cartIndex : index
+    }
+    
+    func calculateTotalPrice() -> String {
+        
+        var price: Float = 0
+        
+        cartItems.forEach {(item) in
+            price += Float(item.quantity) * Float(truncating: item.item.itemCost)
+        }
+        
+        return getPrice(value: price)
+    }
+    
+    func getPrice(value: Float) -> String {
+        
+        let format = NumberFormatter()
+        format.numberStyle = .currency
+        
+        return format.string(from: NSNumber(value: value)) ?? ""
+    }
+    
+    //order data to firebase
+    func updateOrder() {
+        
+        let db = Firestore.firestore()
+        
+        //create dict of food details
+        if ordered {
+            
+            ordered = false
+            db.collection("Users").document(Auth.auth().currentUser!.uid).delete {
+                (err) in
+                if err != nil {
+                    self.ordered = true
+                }
+            }
+            return
+        }
+        var details: [[String: Any]] = []
+        
+        cartItems.forEach { (cart) in
+            details.append([
+            
+                "itemName": cart.item.itemName,
+                "itemQuantity": cart.quantity,
+                "itemCost": cart.item.itemCost
+
+            ])
+        }
+        
+        ordered = true
+        db.collection("Users").document(Auth.auth().currentUser!.uid).setData([
+            
+            "orderedFood": details,
+            "totalCost": calculateTotalPrice(),
+            "location": GeoPoint(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+            
+        ]){ (err) in
+            if err != nil {
+                self.ordered = false
+                return
+            }
+            print("success")
         }
     }
 }

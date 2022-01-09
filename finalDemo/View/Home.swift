@@ -49,45 +49,54 @@ struct Home: View {
                 
                 Divider()
                 
-                ScrollView(.vertical, showsIndicators: false, content: {
-                    
-                    VStack(spacing: 25) {
+                if HomeModel.items.isEmpty {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
+                else {
+                    ScrollView(.vertical, showsIndicators: false, content: {
                         
-                        //artık filtered donmesi lazim
-                        ForEach(HomeModel.filtered){ item in
+                        VStack(spacing: 25) {
                             
-                            //item view
-                            ZStack(alignment: Alignment(horizontal: .center,
-                                                        vertical: .center), content: {
-                                ItemView(item: item)
+                            //artık filtered donmesi lazim
+                            ForEach(HomeModel.filtered){ item in
                                 
-                                HStack{
+                                //item view
+                                ZStack(alignment: Alignment(horizontal: .center,
+                                                            vertical: .center), content: {
+                                    ItemView(item: item)
                                     
-                                    Text("FREE DELIVERY")
-                                        .foregroundColor(.white)
-                                        .padding(.vertical, 10)
-                                        .padding(.horizontal)
-                                        .background(Color.red)
-                                    
-                                    Spacer(minLength: 0)
-                                    
-                                    Button(action: {}, label: {
+                                    HStack{
                                         
-                                        Image(systemName: "plus")
+                                        Text("FREE DELIVERY")
                                             .foregroundColor(.white)
-                                            .padding(10)
+                                            .padding(.vertical, 10)
+                                            .padding(.horizontal)
                                             .background(Color.red)
-                                            .clipShape(Circle())
-                                    })
-                                }
-                                .padding(.trailing, 10)
-                                .padding(.top, 10)
-                            })
-                            .frame(width: UIScreen.main.bounds.width - 30)
+                                        
+                                        Spacer(minLength: 0)
+                                        
+                                        Button(action: {
+                                            HomeModel.addToCart(item: item)
+                                        }, label: {
+                                            
+                                            Image(systemName: item.isAdded ? "checkmark" : "plus")
+                                                .foregroundColor(.white)
+                                                .padding(10)
+                                                .background(item.isAdded ? Color.green : Color.red)
+                                                .clipShape(Circle())
+                                        })
+                                    }
+                                    .padding(.trailing, 10)
+                                    .padding(.top, 10)
+                                })
+                                .frame(width: UIScreen.main.bounds.width - 30)
+                            }
                         }
-                    }
-                    .padding(.top, 10)
-                })
+                        .padding(.top, 10)
+                    })
+                }
             }
             
             //hamburger menu
@@ -121,7 +130,7 @@ struct Home: View {
             HomeModel.locationManager.delegate = HomeModel
            
         })
-        .onChange(of: HomeModel.search, perform: {value in
+        .onChange(of: HomeModel.search, perform: { value in
             
             //search suresi
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
