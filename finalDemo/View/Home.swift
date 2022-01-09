@@ -35,16 +35,14 @@ struct Home: View {
                 Divider()
                 
                 HStack(spacing: 15){
+                    
+                    Image(systemName: "magnifyingglass")
+                        .font(.title2)
+                        .foregroundColor(.gray)
+                    
                     TextField("search", text: $HomeModel.search)
                     
-                    if HomeModel.search != "" {
-                        Button(action: {}, label: {
-                            Image(systemName: "magnifyingglass")
-                                .font(.title2)
-                                .foregroundColor(.gray)
-                        })
-                            .animation(.easeIn)
-                    }
+               
                 }
                 .padding(.horizontal)
                 .padding(.top, 10)
@@ -55,7 +53,8 @@ struct Home: View {
                     
                     VStack(spacing: 25) {
                         
-                        ForEach(HomeModel.items){ item in
+                        //artık filtered donmesi lazim
+                        ForEach(HomeModel.filtered){ item in
                             
                             //item view
                             ZStack(alignment: Alignment(horizontal: .center,
@@ -122,11 +121,23 @@ struct Home: View {
             HomeModel.locationManager.delegate = HomeModel
            
         })
+        .onChange(of: HomeModel.search, perform: {value in
+            
+            //search suresi
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                
+                if value == HomeModel.search && HomeModel.search != "" {
+                    //search data
+                    HomeModel.searchData()
+                }
+            }
+            
+            if HomeModel.search == "" {
+                //reset all data
+                withAnimation(.linear) {
+                    HomeModel.filtered = HomeModel.items
+                }
+            }
+        })
     }
 }
-
-//struct Home_Previews: PreviewProvider {
-//    static var previews: some View {
-//        Home()
-//    }
-//}

@@ -25,6 +25,9 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     //Items
     @Published var items: [Item] = []
+    //Items for search structure
+    @Published var filtered: [Item] = []
+
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         //check location access
@@ -71,6 +74,7 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
+    //login
     func login(){
         Auth.auth().signInAnonymously{(res, err) in
             if err != nil {
@@ -100,8 +104,18 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                 let details = doc.get("itemDetails") as! String
                 
                 return Item(id: id, itemName: name, itemCost: cost, itemDetails: details, itemImage: image, itemRatings: ratings)
-
             })
+            self.filtered = self.items
+        }
+    }
+    
+    //search
+    func searchData(){
+       
+        withAnimation(.linear) {
+            self.filtered = self.items.filter {
+                return $0.itemName.lowercased().contains(self.search.lowercased())
+            }
         }
     }
 }
