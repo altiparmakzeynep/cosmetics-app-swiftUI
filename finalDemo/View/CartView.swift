@@ -18,11 +18,11 @@ struct CartView: View {
                 Button(action: {present.wrappedValue.dismiss()}) {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 26, weight: .heavy))
-                        .foregroundColor(.red)
+                        .foregroundColor(.purple)
                 }
                 
-                Text("my cart")
-                    .font(.title)
+                Text("My Cart")
+                    .font(.title2)
                     .fontWeight(.heavy)
                     .foregroundColor(.black)
                 
@@ -58,9 +58,9 @@ struct CartView: View {
                                 HStack(spacing: 15) {
                                     
                                     Text(homeData.getPrice(value: Float(truncating: cart.item.itemCost)))
-                                        .font(.title2)
-                                        .fontWeight(.heavy)
-                                        .foregroundColor(.black)
+                                        .font(.body)
+                                        .fontWeight(.light)
+                                        .foregroundColor(Color.black)
                                     
                                     Spacer(minLength: 0)
                                     
@@ -140,7 +140,7 @@ struct CartView: View {
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width - 30)
                         .background(
-                            Color(.red)
+                            Color(.purple)
                         )
                         .cornerRadius(15)
                 }

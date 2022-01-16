@@ -20,14 +20,14 @@ struct Home: View {
                     }, label: {
                         Image(systemName: "line.horizontal.3")
                             .font(.title)
-                            .foregroundColor(.green)
+                            .foregroundColor(.purple)
                     })
                     Text(HomeModel.userLocation == nil ? "Locating..." : "Deliver to")
                         .foregroundColor(.black)
                     Text(HomeModel.userAddress)
                         .font(.caption)
                         .fontWeight(.heavy)
-                        .foregroundColor(.green)
+                        .foregroundColor(.pink)
                     Spacer(minLength: 0)
                 }
                 .padding([.horizontal, .top])
@@ -69,11 +69,11 @@ struct Home: View {
                                     
                                     HStack{
                                         
-                                        Text("FREE DELIVERY")
-                                            .foregroundColor(.white)
-                                            .padding(.vertical, 10)
-                                            .padding(.horizontal)
-                                            .background(Color.red)
+//                                        Text("FREE DELIVERY")
+//                                            .foregroundColor(.white)
+//                                            .padding(.vertical, 10)
+//                                            .padding(.horizontal)
+//                                            .background(Color.purple)
                                         
                                         Spacer(minLength: 0)
                                         
@@ -84,12 +84,12 @@ struct Home: View {
                                             Image(systemName: item.isAdded ? "checkmark" : "plus")
                                                 .foregroundColor(.white)
                                                 .padding(10)
-                                                .background(item.isAdded ? Color.green : Color.red)
+                                                .background(item.isAdded ? Color.green : Color.purple)
                                                 .clipShape(Circle())
                                         })
                                     }
-                                    .padding(.trailing, 10)
-                                    .padding(.top, 10)
+//                                    .padding(.trailing, 10)
+                                    .padding(.top, 150)
                                 })
                                 .frame(width: UIScreen.main.bounds.width - 30)
                             }

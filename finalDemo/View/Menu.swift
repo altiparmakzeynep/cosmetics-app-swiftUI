@@ -18,10 +18,10 @@ struct Menu: View {
                     HStack(spacing: 15){
                         Image(systemName: "cart")
                             .font(.title)
-                            .foregroundColor(Color.green)
+                            .foregroundColor(Color.purple)
                         Text("cart")
                             .fontWeight(.bold)
-                            .foregroundColor(.green)
+                            .foregroundColor(.pink)
                         Spacer(minLength: 0)
                     }
                     .padding()
@@ -29,15 +29,15 @@ struct Menu: View {
             
             Spacer()
             
-            HStack{
-                
-                Spacer()
-                
-                Text("version 1998")
-                    .fontWeight(.bold)
-                    .foregroundColor(.green)
-            }
-            .padding(10)
+//            HStack{
+//                
+//                Spacer()
+//                
+//                Text("version 1998")
+//                    .fontWeight(.bold)
+//                    .foregroundColor(.green)
+//            }
+//            .padding(10)
         }
         .padding([.top, .trailing])
         .frame(width: UIScreen.main.bounds.width / 1.6)
