@@ -1,9 +1,3 @@
-//
-//  Home.swift
-//  finalDemo
-//
-//  Created by BirTakım Yazılım on 8.01.2022.
-//
 
 import SwiftUI
 
@@ -67,29 +61,26 @@ struct Home: View {
                                                             vertical: .center), content: {
                                     ItemView(item: item)
                                     
-                                    HStack{
-                                        
-//                                        Text("FREE DELIVERY")
-//                                            .foregroundColor(.white)
-//                                            .padding(.vertical, 10)
-//                                            .padding(.horizontal)
-//                                            .background(Color.purple)
-                                        
-                                        Spacer(minLength: 0)
-                                        
-                                        Button(action: {
-                                            HomeModel.addToCart(item: item)
-                                        }, label: {
+                                    if item.itemShow {
+                                        HStack{
                                             
-                                            Image(systemName: item.isAdded ? "checkmark" : "plus")
-                                                .foregroundColor(.white)
-                                                .padding(10)
-                                                .background(item.isAdded ? Color.green : Color.purple)
-                                                .clipShape(Circle())
-                                        })
+                                            Spacer(minLength: 0)
+                                            
+                                            Button(action: {
+                                                HomeModel.addToCart(item: item)
+                                            }, label: {
+                                                
+                                                Image(systemName: item.isAdded ? "checkmark" : "plus")
+                                                    .foregroundColor(.white)
+                                                    .padding(10)
+                                                    .background(item.isAdded ? Color.green : Color.purple)
+                                                    .clipShape(Circle())
+                                            })
+                                        }
+                                        .padding(.trailing, 10)
+                                        .padding(.top, 150)
                                     }
-//                                    .padding(.trailing, 10)
-                                    .padding(.top, 150)
+                                    
                                 })
                                 .frame(width: UIScreen.main.bounds.width - 30)
                             }
@@ -104,7 +95,7 @@ struct Home: View {
                 Menu(homeData: HomeModel)
                 //left to right
                     .offset(x: HomeModel.showMenu ? 0 : -UIScreen.main.bounds.width / 1.6)
-                Spacer(minLength: 0)
+                Spacer(minLength: 0) //yatay dikey denge
             }
             .background(
                 Color.black.opacity(HomeModel.showMenu ? 0.3 : 0).ignoresSafeArea())
@@ -112,9 +103,10 @@ struct Home: View {
                 //close when touch gap area
             .onTapGesture(perform: {
                 withAnimation(.easeIn){HomeModel.showMenu.toggle()}
+                //efektin yavaş başlayıp daha hızlı bittiği bir animasyon.
             })
             
-            //non closable aler if persmission denied
+            //non closable alert if persmission denied
             if HomeModel.noLocation {
                 Text("please enable location access!")
                     .foregroundColor(.red)

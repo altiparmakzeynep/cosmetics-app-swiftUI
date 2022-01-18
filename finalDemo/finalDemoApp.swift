@@ -1,9 +1,3 @@
-//
-//  finalDemoApp.swift
-//  finalDemo
-//
-//  Created by BirTakım Yazılım on 8.01.2022.
-//
 
 import SwiftUI
 import Firebase

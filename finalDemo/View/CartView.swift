@@ -1,9 +1,3 @@
-//
-//  CartView.swift
-//  finalDemo
-//
-//  Created by BirTakım Yazılım on 9.01.2022.
-//
 
 import SwiftUI
 import SDWebImageSwiftUI
@@ -11,6 +5,8 @@ import SDWebImageSwiftUI
 struct CartView: View {
     @ObservedObject var homeData: HomeViewModel
     @Environment(\.presentationMode) var present
+    
+    var lazy = [GridItem(), GridItem()] // 2 items in 1 row
     
     var body: some View {
         VStack {
@@ -32,7 +28,7 @@ struct CartView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 
-                LazyVStack(spacing: 0) {
+                LazyVGrid(columns: lazy) {
                     
                     //cart item view
                     ForEach(homeData.cartItems) { cart in
@@ -41,10 +37,10 @@ struct CartView: View {
                             WebImage(url: URL(string: cart.item.itemImage))
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 130, height: 130)
+                                .frame(width: 65, height: 65)
                                 .cornerRadius(15)
                             
-                            VStack(alignment: .leading, spacing: 10) {
+                            VStack(alignment: .leading,spacing: 3) {
                                 
                                 Text(cart.item.itemName)
                                     .fontWeight(.semibold)
@@ -55,7 +51,7 @@ struct CartView: View {
                                     .foregroundColor(.gray)
                                     .lineLimit(2)
                                 
-                                HStack(spacing: 15) {
+                                HStack(spacing: 5) {
                                     
                                     Text(homeData.getPrice(value: Float(truncating: cart.item.itemCost)))
                                         .font(.body)

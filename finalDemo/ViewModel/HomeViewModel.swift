@@ -1,9 +1,4 @@
-//
-//  HomeViewModel.swift
-//  finalDemo
-//
-//  Created by BirTakım Yazılım on 8.01.2022.
-//
+
 
 import SwiftUI
 import CoreLocation
@@ -109,8 +104,10 @@ class HomeViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                 let ratings = doc.get("itemRatings") as! String
                 let image = doc.get("itemImage") as! String
                 let details = doc.get("itemDetails") as! String
+                let itemShow = doc.get("itemShow") as! Bool
+
                 
-                return Item(id: id, itemName: name, itemCost: cost, itemDetails: details, itemImage: image, itemRatings: ratings)
+                return Item(id: id, itemName: name, itemCost: cost, itemDetails: details, itemImage: image, itemRatings: ratings, itemShow: itemShow)
             })
             self.filtered = self.items
         }

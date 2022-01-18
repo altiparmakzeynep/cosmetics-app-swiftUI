@@ -1,15 +1,9 @@
-//
-//  Cart.swift
-//  finalDemo
-//
-//  Created by BirTakım Yazılım on 9.01.2022.
-//
 
 import SwiftUI
 
-struct Cart: Identifiable {
+struct Cart: Identifiable { //protokol, tanımlanabilir
     
-    var id = UUID().uuidString
+    var id = UUID().uuidString //unique olmasını sağlar
     var item: Item
     var quantity: Int
 }

@@ -1,9 +1,3 @@
-//
-//  Menu.swift
-//  finalDemo
-//
-//  Created by BirTakım Yazılım on 8.01.2022.
-//
 
 import SwiftUI
 
@@ -29,15 +23,6 @@ struct Menu: View {
             
             Spacer()
             
-//            HStack{
-//                
-//                Spacer()
-//                
-//                Text("version 1998")
-//                    .fontWeight(.bold)
-//                    .foregroundColor(.green)
-//            }
-//            .padding(10)
         }
         .padding([.top, .trailing])
         .frame(width: UIScreen.main.bounds.width / 1.6)
